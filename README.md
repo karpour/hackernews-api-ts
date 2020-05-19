@@ -8,7 +8,7 @@ A clean Typescript client for the [Hacker News API](https://github.com/HackerNew
 
 ## Examples
 
-### Get newest stories
+### Get 5 newest top stories
 
 ```typescript
 import HackerNews from 'hackernews-api-ts';
