@@ -1,19 +1,19 @@
 import fetch from 'node-fetch';
 
-
-enum HackerNewsStoryTypes { top = "top", new = "new", best = "best", ask = "ask", show = "show", job = "job" };
-
-/** Unique ID of a Hacker News item */
-type HackerNewsItemId = number;
-/** Unique ID of a Hacker News user, alphanumeric */
-type HackerNewsUserId = string;
-/** Hacker News category */
-type HackerNewsStoryType = HackerNewsStoryTypes;
-/** Possible type of a Hacker News item */
-type HackerNewsItemType = "job" | "story" | "comment" | "poll" | "pollopt";
-
 const apiUrl = 'https://hacker-news.firebaseio.com/v0/';
 
+/** Unique ID of a Hacker News item, positive integer */
+export type HackerNewsItemId = number;
+/** Unique ID of a Hacker News user, alphanumeric */
+export type HackerNewsUserId = string;
+/** Hacker News category */
+export type HackerNewsStoryType = "top" | "new" | "best" | "ask" | "show" | "job";
+/** Possible type of a Hacker News item */
+export type HackerNewsItemType = "job" | "story" | "comment" | "poll" | "pollopt";
+
+/**
+ * A Hacker news item
+ */
 export interface HackerNewsItem {
     /** The item's unique id. */
     id: HackerNewsItemId,
@@ -47,6 +47,9 @@ export interface HackerNewsItem {
     descendants: number | undefined,
 }
 
+/**
+ * Hacker news user data
+ */
 export interface HackerNewsUser {
     /** The user's unique username. Case-sensitive. Required. */
     id: HackerNewsUserId,
@@ -64,13 +67,13 @@ export interface HackerNewsUser {
 
 export default abstract class HackerNews {
     /** Categories of Hacker news Stories */
-    public static readonly TYPES: HackerNewsStoryType[] = Object.values(HackerNewsStoryTypes);
-    public static readonly TYPE_TOP: HackerNewsStoryType = HackerNewsStoryTypes.top;
-    public static readonly TYPE_NEW: HackerNewsStoryType = HackerNewsStoryTypes.new;
-    public static readonly TYPE_BEST: HackerNewsStoryType = HackerNewsStoryTypes.best;
-    public static readonly TYPE_ASK: HackerNewsStoryType = HackerNewsStoryTypes.ask;
-    public static readonly TYPE_SHOW: HackerNewsStoryType = HackerNewsStoryTypes.show;
-    public static readonly TYPE_JOB: HackerNewsStoryType = HackerNewsStoryTypes.job;
+    public static readonly TYPES: HackerNewsStoryType[] = ["top", "new", "best", "ask", "show", "job"];
+    public static readonly TYPE_TOP: HackerNewsStoryType = "top";
+    public static readonly TYPE_NEW: HackerNewsStoryType = "new";
+    public static readonly TYPE_BEST: HackerNewsStoryType = "best";
+    public static readonly TYPE_ASK: HackerNewsStoryType = "ask";
+    public static readonly TYPE_SHOW: HackerNewsStoryType = "show";
+    public static readonly TYPE_JOB: HackerNewsStoryType = "job";
 
     /**
      * Get item by item ID

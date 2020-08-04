@@ -4,7 +4,8 @@
   "description": "Hackernews v0 API wrapper in Typescript",
   "main": "dist/HackerNews.js",
   "scripts": {
-    "prepublish": "tsc",
+    "prepare": "tsc",
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
